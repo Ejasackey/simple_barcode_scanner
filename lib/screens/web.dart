@@ -1,6 +1,6 @@
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
-import 'dart:ui' as ui;
+import 'dart:ui_web' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:simple_barcode_scanner/constant.dart';
@@ -50,12 +50,8 @@ class BarcodeScanner extends StatelessWidget {
     ui.platformViewRegistry
         .registerViewFactory(createdViewId, (int viewId) => iframe);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(appBarTitle ?? kScanPageTitle),
-        centerTitle: centerTitle,
-      ),
-      body: HtmlElementView(
+    return Expanded(
+      child: HtmlElementView(
         viewType: createdViewId,
       ),
     );
